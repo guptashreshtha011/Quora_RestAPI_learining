@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All posts</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <!-- it only display the post  -->
+    <h1>Quors Posts</h1>
+    <%for (post of posts){ %>
+     <div class="post">
+        <h3 class="user">@<%= post.username %></h3>
+        <h4 class="content"> <%= post.content %></h4>
+        <br>
+        <a href="http://localhost:8080/posts/<%= post.id%>">See in deatil</a>
+        <a href="http://localhost:8080/posts/<%= post.id%>/edit">Edit</a>
+        <br>
+        <form method="post" action="/posts/<%=post.id%>?_method=DELETE">
+            <button>Delete</button>
+        </form>
+        
+     </div>
+
+    <% } %>
+    <br>
+    <!-- creating a button that help us redirect to the creating post page -->
+     <a href="/posts/new"><button>Add post</button></a>
+
+</body>
+</html>
